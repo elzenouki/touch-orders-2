@@ -2048,8 +2048,8 @@
   // ================================================================
   //                 TOUCH EL ZENOUKI — منطق التطبيق
   // ================================================================
-  const APP_VERSION_ = 'v1.4.0';
-  const OWNER_EMAIL_ = 'm.s.e.m.eyg@gmail.com';
+  const APP_VERSION_ = 'v1.4.1';
+  const OWNER_EMAIL_ = 'to.mahmoud153@gmail.com';
   const FAR_METERS_ = 300;
   const VISIT_NOTES_MIN_ = 5;            // أقل طول لـ "إيه اللي اتعمل في الزيارة" — نفس السيرفر               // نفس الرقم اللي في السيرفر
   const SHOP_FIX_MAX_ACC_ = 100;         // أقصى دقة (متر) لتثبيت موقع محل — نفس السيرفر
@@ -2179,7 +2179,8 @@
   function applyLoggedInUser(user, isAdmin){
     state.user = user;
     state.isAdmin = !!isAdmin;
-    state.isOwner = !!(user && String(user.email || '').trim().toLowerCase() === OWNER_EMAIL_);
+    // صاحب الحساب بيتحدد من السيرفر (PROTECTED_OWNER_EMAIL_ في Code.gs) — عشان أي نسخة تانية بإيميل تاني تشتغل من غير تعديل هنا
+    state.isOwner = !!(user && (user.isOwner || String(user.email || '').trim().toLowerCase() === OWNER_EMAIL_));
     document.getElementById('homeUserName').textContent = user.name;
     document.getElementById('adminLink').hidden = !state.isOwner;
     document.getElementById('repHome').hidden = state.isAdmin;
