@@ -1,8 +1,8 @@
 // طلبيات تاتش — Service Worker
 // غيّر رقم الإصدار ده مع كل تحديث للتطبيق عشان المناديب يظهرلهم شريط "فيه تحديث جديد"
 const CACHE_PREFIX = 'touch-orders-copy2-v';
-const CACHE = CACHE_PREFIX + '1.4.0';
-const SHELL = ['./', './index.html', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = CACHE_PREFIX + '1.4.1';
+const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).catch(() => {}));
